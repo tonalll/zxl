@@ -1,0 +1,37 @@
+[{
+    "id": "layout",
+    "autoRefresh": "false",
+    "title": "layout示例",
+    "ico": "x-ico-default",
+    "url": "./sea-modules/zxl/ajax/layout.html"
+}, {
+    "id": "button",
+    "autoRefresh": "false",
+    "title": "按钮示例",
+    "ico": "x-ico-default",
+    "url": "./sea-modules/zxl/ajax/button.html"
+}, {
+    "id": "form",
+    "autoRefresh": "false",
+    "title": "表单布局示例",
+    "ico": "x-ico-default",
+    "url": "./sea-modules/zxl/ajax/form.html"
+}, {
+    "id": "form-unit",
+    "autoRefresh": "false",
+    "title": "菜单组件示例",
+    "ico": "x-ico-default",
+    "url": "./sea-modules/zxl/ajax/form-unit.html"
+},{
+    "id": "ajaxSubmit",
+    "autoRefresh": "false",
+    "title": "菜单ajax提交示例",
+    "ico": "x-ico-default",
+    "url": "./sea-modules/zxl/ajax/ajaxSubmit.html"
+}, {
+    "id": "page",
+    "autoRefresh": "false",
+    "title": "分页示例",
+    "ico": "x-ico-default",
+    "url": "./sea-modules/zxl/ajax/page.html"
+}]

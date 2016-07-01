@@ -1,0 +1,29 @@
+<div class="l-segment l-border-0 example-layout pageLayout">
+    <form action="./sea-modules/zxl/ajax/ajaxSubmit.json" class="m-ajaxSubmit" callback='afterBack:afterBackTest'>
+        <div class="l-row-padding">
+            <div class="l-col-2 m-input">
+                <label for="">输入项</label>
+                <input type="text">
+            </div>
+            <div class="l-col-2 m-input">
+                <label for="">输入项</label>
+                <input type="text">
+            </div>
+            <div class="l-col-2 m-input">
+                <label for="">输入项</label>
+                <input type="text">
+            </div>
+            <div class="l-col-1 m-input">
+                <input type="submit" value="提交" class="m-button m-submit">
+            </div>
+            <div class="l-col-1 m-input">
+                <input type="reset" value="重置" class="m-button-default m-reset">
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+function afterBackTest(_dd){
+    console.info(_dd);
+}
+</script>

@@ -1,0 +1,7 @@
+{
+    "id": "layout",
+    "autoRefresh": "false",
+    "title": "layout示例",
+    "ico": "x-ico-default",
+    "url": "./sea-modules/zxl/ajax/layout.html"
+}
