@@ -4,6 +4,7 @@ define('zxl/ui', function (require, exports, module) {
     var global = require('global');
     var layout = require('layout');
     var room = require('room');
+    var layer = require('layer');
     var ajax = require('ajax');
     var grid = require('grid');
     //    ui模块
@@ -54,7 +55,18 @@ define('zxl/ui', function (require, exports, module) {
             var $this = $(this);
             $this.on({
                 click: function () {
-                    room.window.addAndopen($.zJSON($this.attr('window')));
+                    room.window.addAndOpen($.zJSON($this.attr('window')));
+                }
+            });
+        });
+        //        layer
+        $('[layer]', $g).each(function (i, e) {
+            var $this = $(this);
+            var options = $.zJSON($this.attr('layer'));
+            options.target = $this.closest('.layer').parent();
+            $this.on({
+                click: function () {
+                    layer.addAndOpen(options);
                 }
             });
         });
