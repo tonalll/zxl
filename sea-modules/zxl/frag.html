@@ -1,8 +1,39 @@
 <div class="frag">
 
-    <div role="alert">
-        <div class='alert'>asfdasdf</div>
+    <div role="notice">
+        <div class="m-notice">
+            <div class="m-notice-con"></div>
+        </div>
     </div>
+    <div role="alert">
+        <div class="m-alert">
+            <div class="m-alert-con"></div>
+            <div class="l-row">
+                <div class="l-col-6">&nbsp;</div>
+                <div class="l-col-6">
+                    <div class="m-alert-close">确定</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="confirm">
+        <div class="m-confirm">
+            <div class="m-confirm-con"></div>
+            <div class="l-row">
+                <div class="l-col-6">
+                    <div class="m-confirm-cancle">取消</div>
+                </div>
+                <div class="l-col-6">
+                    <div class="m-confirm-close">确定</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="alert-mask">
+        <div id="m-alert-mask">
+        </div>
+    </div>
+
 
     <div role="taskBarUnit">
         <div class="l-row x-unit" window='url:"{url}",title:"{title}",id:"{id}",ico:"{ico}",autoRefresh:"{autoRefresh}"'>
@@ -37,10 +68,11 @@
 
     <div role="layer">
         <div class='layer'>
-            <div class="layer-head l-table">
-                <div class="l-table-cell layer-title">{title}</div>
-                <div class="l-table-cell l-align-right">
-                    <div class="layer-back">返回</div>
+            <div class="layer-head l-row">
+                <div class="l-col-10 layer-title">
+                    <h1>{title}</h1></div>
+                <div class="l-col-2 l-align-right">
+                    <div class="layer-back"></div>
                 </div>
             </div>
             <div class="layer-body"></div>

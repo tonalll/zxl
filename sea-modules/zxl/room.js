@@ -70,7 +70,7 @@ define('zxl/room', function (require, exports, module) {
                     layer.addAndOpen(options);
                 } else {
                     //                    显示最后一层
-                    layer.open(_id);
+                    layer.open($window.find('.layer:last').attr('lyaer-id'));
                 }
                 //                console.info(room.taskBar.cache);
                 //                seajs.use(['ui', 'layout'], function (ui, layout) {//                    ui($window);
@@ -80,11 +80,10 @@ define('zxl/room', function (require, exports, module) {
             addAndOpen: function (_options) {
                 var options = _options;
                 //                console.info(options);
-                var tmp = 'windowAdd.asfd';
                 $(document).on({
                     ['windowAdd.' + options.id]: function (e, id) {
                         //                        console.info('window addAndOpen');
-//                        console.info(id);
+                        //                        console.info(id);
                         room.window.open(options.id);
                     }
                 });

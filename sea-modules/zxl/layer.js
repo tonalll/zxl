@@ -42,7 +42,7 @@ define('zxl/layer', function (require, exports, module) {
             var layerTotal = options.target.find('>.layer').length;
             $layer.data(options);
             options.target.attr('layer-total', layerTotal);
-            $layer.attr('layer-index', layerTotal - 1).attr('lyaer-id', options.id);
+            $layer.attr('layer-index', layerTotal - 1).attr('layer-id', options.id);
             $layer.trigger('layerAdd.' + options.id, options.id);
 
         },
@@ -67,14 +67,33 @@ define('zxl/layer', function (require, exports, module) {
                     ui($layer);
                     $layer.show().siblings().hide();
                 });
+            }).fail(function () {
+                var $layerBody = $layer.find('>.layer-body');
+                $layerBody.html('页面加载失败！');
             });
         },
         getLayer: function (_id) {
-            return _id ? $('.layer[lyaer-id=' + _id + ']') : $('.layer:visible:first');
+            return _id ? $('.layer[layer-id=' + _id + ']') : $('.layer:visible:first');
         },
         refresh: function () {},
-        close: function () {},
-        remove: function () {},
+        close: function (_id) {
+            var $layer = layer.getLayer(_id);
+            var $window = $layer.closest('.window');
+            var total = Number($window.attr('layer-total'));
+            var $prev = $layer.prev('.layer');
+            $layer.remove();
+            total -= 1;
+            if (total == 0) {
+                delete room.window.cache[$window.data().id];
+                $window.data().$unit.removeClass('x-unit-open');
+                $window.remove();
+                var $sleep = $('#taskBar .x-layout .x-unit-sleep:last');
+                $sleep.click();
+            } else {
+                $prev.show();
+                $window.attr('layer-total', total);
+            }
+        },
         addAndOpen: function (_options) {
             var options = $.extend({}, layer.options, _options);
             if (!options.id) options.id = 'default' + Math.random().toString().replace('0.', '');

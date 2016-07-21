@@ -53,9 +53,10 @@ define('zxl/ui', function (require, exports, module) {
         //        window
         $('[window]', $g).each(function (i, e) {
             var $this = $(this);
+            var options = $.zJSON($this.attr('window'));
             $this.on({
                 click: function () {
-                    room.window.addAndOpen($.zJSON($this.attr('window')));
+                    room.window.addAndOpen(options);
                 }
             });
         });
@@ -70,8 +71,21 @@ define('zxl/ui', function (require, exports, module) {
                 }
             });
         });
+        //        层关闭
+        $('.layer-back', $g).each(function (i, e) {
+            var $this = $(this);
+            $this.on({
+                click: function () {
+                    layer.close($this.closest('.layer').attr('layer-id'));
+                }
+            });
+        });
         $('.m-ajaxSubmit', $g).each(function (i, e) {
             var $form = $('form');
+            var callback = $.extend({}, ajax.callback, $.zJSON($form.attr('callback')));
+            $form.data({
+                callback: callback
+            });
             $form.on({
                 submit: function () {
                     ajax.ajaxSubmit($form);
@@ -81,6 +95,10 @@ define('zxl/ui', function (require, exports, module) {
         });
         $('.m-pageSubmit', $g).each(function (i, e) {
             var $form = $('form');
+            var callback = $.extend({}, ajax.callback, $.zJSON($form.attr('callback')));
+            $form.data({
+                callback: callback
+            });
             var $pageLayout = $form.closest('.pageLayout');
             var pageId = $pageLayout.attr('pageLayout-id') || Math.random().toString().replace('0.', '')
             $pageLayout.attr('pageLayout-id', pageId);

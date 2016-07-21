@@ -10,7 +10,7 @@ define('zxl/grid', function (require, exports, module) {
             var pageNow = Number(_$pageBar.attr('page-now'));
             var pageButton = '<span class="m-button m-pageButton"></span>';
             var pageTotal = Number(_$pageBar.attr('page-total'));
-            pageTotal = 12;
+//            pageTotal = 12;
             pageNow = 8;
             var pageMin = pageNow - 5 < 1 ? 1 : pageNow - 5;
             var pageMax = pageTotal - 5 <= pageNow ? pageTotal : pageNow + 5;

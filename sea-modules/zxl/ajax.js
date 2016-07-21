@@ -1,6 +1,7 @@
 define('zxl/ajax', function (require, exports, module) {
     var index = require('index');
     var $ = require('jquery');
+    var msg = require('msg');
     //    ajax模块
     var ajax = {
         name: 'ajax',
@@ -57,7 +58,7 @@ define('zxl/ajax', function (require, exports, module) {
 
         },
         ajaxSubmit: function (_$form) {
-            var callback = $.extend({}, ajax.callback, $.zJSON(_$form.attr('callback')));
+            var callback = _$form.data().callback;
             if (!callback.beforeBack()) return;
             $.ajax({
                 url: _$form.attr('action'),
@@ -88,6 +89,11 @@ define('zxl/ajax', function (require, exports, module) {
         },
         done: function (_$form, _json) {
             console.info(_json);
+            msg.alert(_json.message,true);
+//            msg.notice(_json.message);
+            //            var callback = _$form.data().callback;
+            //            callback.afterBack(_$form, _json);
+
         },
     }
     module.exports = ajax;
