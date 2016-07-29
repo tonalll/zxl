@@ -249,21 +249,98 @@ body {
 .m-pageBar .x-select {
     background-color: #00beee!important;
 }
+
+
 /*弹窗提示信息*/
-.m-alert{position: fixed;_position: absolute;width: 38%;border: 2px solid #00beee;z-index: 51;top: 0;left: 0;background: #fff;}
-.m-alert-con{padding: 20px 5px;border-bottom: 1px solid #00beee;}
-.m-alert-close{color: #00beee;border: 1px solid #00beee;background: #fff;cursor: pointer;padding: 5px 10px;text-align: center;margin: 10px;}
-.m-alert-close-hover{background: #00beee;color: #fff;}
 
-.m-confirm{position: fixed;_position: absolute;width: 38%;border: 2px solid #00beee;z-index: 51;top: 0;left: 0;background: #fff;}
-.m-confirm-con{padding: 20px 5px;border-bottom: 1px solid #00beee;}
-.m-confirm-close{color: #00beee;border: 1px solid #00beee;background: #fff;cursor: pointer;padding: 5px 10px;text-align: center;margin: 10px;}
-.m-confirm-close-hover{background: #00beee;color: #fff;}
-.m-confirm-cancle{right: 100px;color: #999;border: 1px solid #999;background: #fff;cursor: pointer;padding: 5px 10px;text-align: center;margin: 10px;}
-.m-confirm-cancle-hover{background: #999;color: #fff;}
+.m-alert {
+    position: fixed;
+    _position: absolute;
+    width: 38%;
+    border: 2px solid #00beee;
+    z-index: 51;
+    top: 0;
+    left: 0;
+    background: #fff;
+}
 
+.m-alert-con {
+    padding: 20px 5px;
+    border-bottom: 1px solid #00beee;
+}
 
-#m-alert-mask{width: 100%;height: 100%;background: #000;display: none;position: fixed;top:0px;left: 0px;z-index: 41;}
+.m-alert-close {
+    color: #00beee;
+    border: 1px solid #00beee;
+    background: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    text-align: center;
+    margin: 10px;
+}
+
+.m-alert-close-hover {
+    background: #00beee;
+    color: #fff;
+}
+
+.m-confirm {
+    position: fixed;
+    _position: absolute;
+    width: 38%;
+    border: 2px solid #00beee;
+    z-index: 51;
+    top: 0;
+    left: 0;
+    background: #fff;
+}
+
+.m-confirm-con {
+    padding: 20px 5px;
+    border-bottom: 1px solid #00beee;
+}
+
+.m-confirm-close {
+    color: #00beee;
+    border: 1px solid #00beee;
+    background: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    text-align: center;
+    margin: 10px;
+}
+
+.m-confirm-close-hover {
+    background: #00beee;
+    color: #fff;
+}
+
+.m-confirm-cancle {
+    right: 100px;
+    color: #999;
+    border: 1px solid #999;
+    background: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    text-align: center;
+    margin: 10px;
+}
+
+.m-confirm-cancle-hover {
+    background: #999;
+    color: #fff;
+}
+
+#m-alert-mask {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 41;
+}
 
 .m-notice {
     position: fixed;
@@ -281,13 +358,11 @@ body {
 }
 
 
+/*edit输入错误样式*/
 
-
-
-
-
-
-
+.editError {
+    border: 1px solid #f00!important;
+}
 
 
 /*asdf*/

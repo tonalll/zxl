@@ -19,7 +19,7 @@
 }, {
     "id": "form-unit",
     "autoRefresh": "false",
-    "title": "菜单组件示例",
+    "title": "表单组件示例",
     "ico": "x-ico-default",
     "url": "./sea-modules/zxl/ajax/form-unit.html"
 }, {

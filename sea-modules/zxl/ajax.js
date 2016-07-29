@@ -52,6 +52,7 @@ define('zxl/ajax', function (require, exports, module) {
                     // index.alert("<div>Http status: " + xhr.status + " " + xhr.statusText + "</div>" + "<div>ajaxOptions: " + ajaxOptions + "</div>" + "<div>thrownError: " + thrownError + "</div>" + "<div>" + xhr.responseText + "</div>");
                     //                    global.isTimeout(xhr.responseText);
                     //                    index.alert("<div>" + xhr.responseText + "</div>");
+                    msg.alert(xhr.responseText, true);
 
                 }
             });
@@ -89,8 +90,8 @@ define('zxl/ajax', function (require, exports, module) {
         },
         done: function (_$form, _json) {
             console.info(_json);
-            msg.alert(_json.message,true);
-//            msg.notice(_json.message);
+            //            msg.alert(_json.message,true);
+            //            msg.notice(_json.message);
             //            var callback = _$form.data().callback;
             //            callback.afterBack(_$form, _json);
 

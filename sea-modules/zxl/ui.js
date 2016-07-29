@@ -71,6 +71,17 @@ define('zxl/ui', function (require, exports, module) {
                 }
             });
         });
+        //        edit点击编辑插件
+        $('[edit]', $g).each(function () {
+            var $this = $(this);
+            $this.on({
+                click: function () {
+                    seajs.use('edit', function (edit) {
+                        edit($this);
+                    });
+                }
+            });
+        });
         //        层关闭
         $('.layer-back', $g).each(function (i, e) {
             var $this = $(this);

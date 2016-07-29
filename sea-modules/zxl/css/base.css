@@ -776,6 +776,13 @@ m
     border: 1px solid #ccc;
 }
 
+.m-input .x-layout {
+    display: block;
+    width: 100%;
+    padding: 2px 0;
+    border: 1px solid #ccc;
+}
+
 .m-input input:focus {
     border-color: #00BEEE;
 }
@@ -878,7 +885,6 @@ m
     left: 0px;
     z-index: 11;
 }
-
 
 
 /*c css样式简写*/

@@ -1,0 +1,28 @@
+<html>
+
+<body>
+    <script src="http://code.jquery.com/jquery-1.4.1.js"></script>
+<div>
+    asdf
+    afd
+</div>
+</body>
+<script>
+    $("body").mousewheel(function (event, delta) {
+        this.scrollLeft -= (delta * 30);
+        event.preventDefault();
+    });
+
+
+
+    $(document).ready(function () {
+        $('body', $g).on({
+            mousewheel: function (event, delta) {
+                var $this = $(this);
+                console.info($this.scrollTop());
+            }
+        });
+    });
+</script>
+
+</html>
