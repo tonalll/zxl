@@ -7,6 +7,7 @@ define('zxl/ui', function (require, exports, module) {
     var layer = require('layer');
     var ajax = require('ajax');
     var grid = require('grid');
+    var datepicker = require('datepicker');
     //    ui模块
     function ui(_$g) {
         var $g = _$g || document;
@@ -136,9 +137,9 @@ define('zxl/ui', function (require, exports, module) {
     //    加载用户自定义ui事件
     function userUi(_$g) {
         var $g = _$g || document;
-        for (var i = 1; i < index.uid; i++) {
-            if (index.cache[i.toString]) {
-                index.cache[i.toString].handle($g);
+        for (var i = 1; i <= index.uid; i++) {
+            if (index.cache[i.toString()]) {
+                index.cache[i.toString()].handle($g);
             }
         }
     }

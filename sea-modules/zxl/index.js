@@ -3,7 +3,8 @@ define('zxl/index', function (require, exports, module) {
     var $ = require('jquery');
     var layout = require('layout');
     require('zxl/test');
-    require('jqueryExtend');
+    require('extend'); //js扩展
+    require('jqueryExtend'); //jquery扩展
     //    require('zxl/test');
     //    console.info($);
     //    console.info($.sayHello);
@@ -60,6 +61,7 @@ define('zxl/index', function (require, exports, module) {
             });
         },
         on: function (_obj) {
+//            console.info(_obj.init);
             var obj = _obj || {};
             if ($.isFunction(obj.init)) {
                 this.uid += 1;
@@ -83,5 +85,6 @@ define('zxl/index', function (require, exports, module) {
             defaultPage: '',
         }
     }
+    window.index = index;
     module.exports = index;
 });
