@@ -43,10 +43,22 @@ define('zxl/room', function (require, exports, module) {
                 //                });
 
             },
-            refresh: function () {},
-            close: function () {},
-            remove: function () {},
-            getWindow: function () {},
+            refresh: function (_id) {
+                //                刷新
+                var $window = room.window.getWindow(_id);
+                $window.attr('layer-total', 1);
+                $window.find('.layer').slice(1).remove();
+                $window.find('.layer').show();
+                layer.refresh(_id);
+            },
+            remove: function (_id) {
+                $('[window-id="' + _id + '"]').remove();
+                delete room.window.cache[_id];
+            },
+            getWindow: function (_id) {
+                var $window = $('[window-id="' + _id + '"]');
+                return $window;
+            },
             //            打开激活窗口
             open: function (_id) {
                 //                显示窗口
@@ -55,7 +67,7 @@ define('zxl/room', function (require, exports, module) {
                 //                有层则显示最后一层
 
 
-                var $window = room.window.cache[_id].$window;
+                var $window = room.window.getWindow(_id);
                 $window.show().siblings('.window').hide();
                 room.desk.hide();
                 room.taskBar.add(room.window.cache[_id]);
@@ -111,6 +123,9 @@ define('zxl/room', function (require, exports, module) {
                     if (room.options.defaultPage) room.taskBar.cache[room.options.defaultPage].$unit.click();
                 });
             },
+            getUnit: function (_id) {
+                return room.taskBar.cache[_id]['$unit'];
+            },
             //            增加任务栏按钮
             add: function (_options) {
                 var options = _options;
@@ -119,11 +134,46 @@ define('zxl/room', function (require, exports, module) {
                     var html = index.frag['taskBarUnit'].replace('{id}', options.id).replace('{url}', options.url).replace(/{title}/g, options.title).replace(/{ico}/g, options.ico).replace('{autoRefresh}', options.autoRefresh || false);
                     $('#taskBar .x-layout').append(html);
                     var $this = $('#taskBar .x-layout .x-unit:last');
+                    if (options.fixed) $this.addClass('x-fixed');
                     $this.on({
                         click: function () {
                             if ($this.is('.x-unit-open')) return;
                             else if ($this.is('.x-unit-sleep')) room.window.open(options.id);
                             else room.window.addAndOpen(options);
+                        },
+                        contextmenu: function (e) {
+                            //                            右键菜单
+                            //                    console.info(e);
+                            //                    index.alert();
+                            var $unitContextMenu = $('#unitContextMenu');
+                            $unitContextMenu.css({
+                                top: e.pageY - 5,
+                                left: e.pageX - 5
+                            });
+                            // console.info('右键');
+                            //                    菜单初始化 
+                            if ($this.hasClass('x-unit-open') || $this.hasClass('x-unit-sleep')) {
+                                $('#unit-close').show();
+                                $('#unit-refresh').show();
+                            } else {
+                                $('#unit-close').hide();
+                                $('#unit-refresh').hide();
+                            }
+                            if ($this.hasClass('x-fixed')) {
+                                $('#unit-unfix').show();
+                                $('#unit-fix').hide();
+                            } else {
+                                $('#unit-unfix').hide();
+                                $('#unit-fix').show();
+
+                            }
+                            $unitContextMenu.show();
+                            $unitContextMenu.data(room.taskBar.cache[options.id]);
+                            if ($unitContextMenu.zMargin('bottom') < 0) $unitContextMenu.css({
+                                top: $unitContextMenu.offset().top + $unitContextMenu.zMargin('bottom')
+                            });
+                            // console.info($unitContextMenu.zMargin('bottom'));
+                            return false;
                         }
                     });
                     room.taskBar.cache[options.id] = options;
@@ -131,7 +181,16 @@ define('zxl/room', function (require, exports, module) {
                 });
 
             },
-            remove: function () {},
+            close: function (_id) {
+                var $unit = room.taskBar.cache[_id]['$unit'];
+                if ($unit.is('.x-fixed')) $unit.removeClass('x-unit-open x-unit-sleep');
+                else room.taskBar.remove(_id);
+            },
+            remove: function (_id) {
+                var $unit = room.taskBar.cache[_id]['$unit'];
+                delete room.taskBar.cache[_id];
+                $unit.remove();
+            },
         },
         init: function (_options) {
             room.options = _options;

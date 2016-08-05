@@ -168,6 +168,11 @@ body {
     line-height: 30px;
 }
 
+#unitContextMenu{width: auto !important;background: #fff;display: none;position: absolute;z-index: 9!important;border: 1px solid #005551;}
+#unitContextMenu ul li{cursor: pointer;padding: 5px 10px;}
+#unitContextMenu ul li:hover{cursor: pointer;background: #005551;color: #fff;}
+
+
 #room {
     float: left;
     background: #eee

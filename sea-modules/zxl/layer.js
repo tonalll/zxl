@@ -48,10 +48,11 @@ define('zxl/layer', function (require, exports, module) {
         },
         open: function (_id) {
             var $layer = layer.getLayer(_id);
-            if ($layer.is('[open]')) {
+            if ($layer.is('[open]') && !$layer.is('[refresh]')) {
                 $layer.show().siblings().hide();
                 return;
             }
+            console.info('打开或者刷新了');
             var options = $layer.data();
             $.ajax({
                 url: options.url,
@@ -62,10 +63,11 @@ define('zxl/layer', function (require, exports, module) {
                 var $layerBody = $layer.find('>.layer-body');
                 $layerBody.html(_html);
                 $layer.attr('open', '');
+                $layer.removeAttr('refresh');
                 seajs.use('ui', function (ui) {
                     //                    console.info($layer);
-                    ui($layer);
                     $layer.show().siblings().hide();
+                    ui($layer);
                 });
             }).fail(function () {
                 var $layerBody = $layer.find('>.layer-body');
@@ -75,7 +77,11 @@ define('zxl/layer', function (require, exports, module) {
         getLayer: function (_id) {
             return _id ? $('.layer[layer-id=' + _id + ']') : $('.layer:visible:first');
         },
-        refresh: function () {},
+        refresh: function (_id) {
+            var $layer = layer.getLayer(_id);
+            $layer.attr('refresh', '');
+            if ($layer.is(':visible')) layer.open(_id);
+        },
         close: function (_id) {
             var $layer = layer.getLayer(_id);
             var $window = $layer.closest('.window');

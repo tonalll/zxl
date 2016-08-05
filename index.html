@@ -246,6 +246,14 @@
             </div>
         </div>
     </div>
+    <div class="contextMenu" id="unitContextMenu">
+        <ul>
+            <li id="unit-close">关闭</li>
+            <li id="unit-refresh">刷新</li>
+            <li id="unit-fix">将此项固定到任务栏</li>
+            <li id="unit-unfix">从任务栏取消固定此项</li>
+        </ul>
+    </div>
     <script src="./sea-modules/seajs/seajs/2.2.0/sea.js"></script>
     <script src="./sea-modules/seajs/seajs/2.2.0/sea-debug.js"></script>
     <script>
@@ -281,7 +289,7 @@
             index.config({
                 frag: './sea-modules/zxl/frag.html',
                 taskBar: './sea-modules/zxl/ajax/taskBar.json',
-                defaultPage: 'form-unit',
+                defaultPage: 'pageDiv',
             });
             index.init();
         });

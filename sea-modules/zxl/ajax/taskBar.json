@@ -3,65 +3,62 @@
     "autoRefresh": "false",
     "title": "layout示例",
     "ico": "x-ico-default",
-    "url": "./sea-modules/zxl/ajax/layout.html"
+    "url": "./sea-modules/zxl/ajax/layout.html",
+    "fixed": true
 }, {
     "id": "button",
     "autoRefresh": "false",
     "title": "按钮示例",
     "ico": "x-ico-default",
-    "url": "./sea-modules/zxl/ajax/button.html"
+    "url": "./sea-modules/zxl/ajax/button.html",
+    "fixed": true
 }, {
     "id": "form",
     "autoRefresh": "false",
     "title": "表单布局示例",
     "ico": "x-ico-default",
-    "url": "./sea-modules/zxl/ajax/form.html"
+    "url": "./sea-modules/zxl/ajax/form.html",
+    "fixed": true
 }, {
     "id": "form-unit",
     "autoRefresh": "false",
     "title": "表单组件示例",
     "ico": "x-ico-default",
-    "url": "./sea-modules/zxl/ajax/form-unit.html"
+    "url": "./sea-modules/zxl/ajax/form-unit.html",
+    "fixed": true
 }, {
     "id": "ajaxSubmit",
     "autoRefresh": "false",
     "title": "菜单ajax提交示例",
     "ico": "x-ico-default",
-    "url": "./sea-modules/zxl/ajax/ajaxSubmit.html"
+    "url": "./sea-modules/zxl/ajax/ajaxSubmit.html",
+    "fixed": true
 }, {
     "id": "page",
     "autoRefresh": "false",
-    "title": "分页示例",
+    "title": "表格分页示例",
     "ico": "x-ico-default",
-    "url": "./sea-modules/zxl/ajax/page.html"
+    "url": "./sea-modules/zxl/ajax/page.html",
+    "fixed": true
+}, {
+    "id": "pageDiv",
+    "autoRefresh": "false",
+    "title": "其它分页示例",
+    "ico": "x-ico-default",
+    "url": "./sea-modules/zxl/ajax/pageDiv.html",
+    "fixed": true
 }, {
     "id": "layer",
     "autoRefresh": "false",
     "title": "层示例",
     "ico": "x-ico-default",
-    "url": "./sea-modules/zxl/ajax/layer.html"
+    "url": "./sea-modules/zxl/ajax/layer.html",
+    "fixed": true
 }, {
     "id": "aaaaaaaaaaaaaaaaaaaaaaa",
     "autoRefresh": "false",
     "title": "分页示例",
     "ico": "x-ico-default",
-    "url": "./sea-modules/zxl/ajax/aaaaaaaaaaaaaaaaaaaaaaa.html"
-}, {
-    "id": "aaaaaaaaaaaaaaaaaaaaaaa",
-    "autoRefresh": "false",
-    "title": "分页示例",
-    "ico": "x-ico-default",
-    "url": "./sea-modules/zxl/ajax/aaaaaaaaaaaaaaaaaaaaaaa.html"
-}, {
-    "id": "aaaaaaaaaaaaaaaaaaaaaaa",
-    "autoRefresh": "false",
-    "title": "分页示例",
-    "ico": "x-ico-default",
-    "url": "./sea-modules/zxl/ajax/aaaaaaaaaaaaaaaaaaaaaaa.html"
-}, {
-    "id": "aaaaaaaaaaaaaaaaaaaaaaa",
-    "autoRefresh": "false",
-    "title": "分页示例",
-    "ico": "x-ico-default",
-    "url": "./sea-modules/zxl/ajax/aaaaaaaaaaaaaaaaaaaaaaa.html"
+    "url": "./sea-modules/zxl/ajax/aaaaaaaaaaaaaaaaaaaaaaa.html",
+    "fixed": true
 }]
