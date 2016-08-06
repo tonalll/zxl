@@ -92,13 +92,13 @@ define('zxl/room', function (require, exports, module) {
             addAndOpen: function (_options) {
                 var options = _options;
                 //                console.info(options);
-                $(document).on({
-                    ['windowAdd.' + options.id]: function (e, id) {
+                $(document).on(
+                    'windowAdd.' + options.id, function (e, id) {
                         //                        console.info('window addAndOpen');
                         //                        console.info(id);
                         room.window.open(options.id);
                     }
-                });
+                );
                 room.window.add(options);
             },
         },
@@ -120,6 +120,9 @@ define('zxl/room', function (require, exports, module) {
                     for (var i = 0; i < _json.length; i++) {
                         room.taskBar.add(_json[i]);
                     }
+                    seajs.use('ui', function (ui) {
+                        ui();
+                    });
                     if (room.options.defaultPage) room.taskBar.cache[room.options.defaultPage].$unit.click();
                 });
             },
@@ -136,11 +139,11 @@ define('zxl/room', function (require, exports, module) {
                     var $this = $('#taskBar .x-layout .x-unit:last');
                     if (options.fixed) $this.addClass('x-fixed');
                     $this.on({
-                        click: function () {
-                            if ($this.is('.x-unit-open')) return;
-                            else if ($this.is('.x-unit-sleep')) room.window.open(options.id);
-                            else room.window.addAndOpen(options);
-                        },
+                        //                        click: function () {
+                        //                            if ($this.is('.x-unit-open')) return;
+                        //                            else if ($this.is('.x-unit-sleep')) room.window.open(options.id);
+                        //                            else room.window.addAndOpen(options);
+                        //                        },
                         contextmenu: function (e) {
                             //                            右键菜单
                             //                    console.info(e);

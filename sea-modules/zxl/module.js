@@ -1,13 +1,13 @@
-define('zxl/edit', function (require, exports, module) {
+define('zxl/module', function (require, exports, module) {
     var index = require('index');
     var $ = require('jquery');
-    var edit = {
-        name: 'edit',
+    var module = {
+        name: 'module',
         sayName: function () {
             console.info(this.name);
         },
 
     }
-    module.exports = edit;
+    module.exports = module;
 
 });

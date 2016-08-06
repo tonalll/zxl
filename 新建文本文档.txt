@@ -1,0 +1,106 @@
+
+    // 上传组件
+    $('[upload]', $g).each(function() {
+        var $thisUpload = $(this);
+        var _options = {
+            auto: true,
+            swf: zty.global.swf,
+            pick: {
+                id: $thisUpload[0]
+            },
+            eventsBack: {
+                // eventsBack是我自己新增，方便调用。
+                beforeFileQueued: function(file) {
+                    // 当文件被加入队列之前触发，此事件的handler返回值为false，则此文件不会被添加进入队列。
+                    // 参数File对象
+                },
+                uploadSuccess: function(file, data) {
+                    //当文件上传成功时触发
+                    // File对象
+                    // data 服务端返回的数据
+                },
+                uploadError: function(file, data) {
+                    //当文件上传成功时触发
+                    // File对象
+                    // data 服务端返回的数据
+                },
+                error: function(handler) {
+                    // 当validate不通过时，会以派送错误事件的形式通知调用者
+                    // type {String} 错误类型。
+                    // 当validate不通过时，会以派送错误事件的形式通知调用者。通过upload.on('error', handler)可以捕获到此类错误，目前有以下错误会在特定的情况下派送错来。
+
+                    // if (handler == "Q_EXCEED_NUM_LIMIT") {
+                    //     index.alert("最多只能上传" + options.fileNumLimit + "个!");
+                    // }
+                    // if (handler == "F_DUPLICATE") {
+                    //     index.alert("文件重复!");
+                    // }
+                    // Q_EXCEED_NUM_LIMIT 在设置了fileNumLimit且尝试给uploader添加的文件数量超出这个值时派送。
+                    // Q_EXCEED_SIZE_LIMIT 在设置了Q_EXCEED_SIZE_LIMIT且尝试给uploader添加的文件总大小超出这个值时派送。
+                    // Q_TYPE_DENIED 当文件类型不满足时触发。。
+                }
+            }
+        };
+        // $thisUpload.addClass('upload');
+        var options = $.zJSON($(this).attr('upload'));
+        options = $.extend({}, _options, options);
+        var uploader;
+        //        初始化文件上传组件
+        uploader = WebUploader.create(options);
+        uploader.on('beforeFileQueued', options.eventsBack.beforeFileQueued);
+        //        文件上传成功{}
+        uploader.on('uploadSuccess', options.eventsBack.uploadSuccess);
+        //        当文件上传出错时触发{}
+        uploader.on('uploadError', options.eventsBack.uploadError);
+        //        上传错误
+        uploader.on('error', options.eventsBack.error);
+
+
+        //        初始化上传按钮
+
+        // window.tmp = uploader;
+        // $('#' + options.upButton).on({
+        // 		click: function() {
+        // 				uploader.upload();
+        // 		}
+        // }).css({
+        // 		overflow: 'hidden'
+        // });
+        // //        对初始化的文件进行删除绑定
+        // $listLayout.find('.fileUnit').each(function() {
+        // 		var $fileUnit = $(this);
+        // 		$fileUnit.find('.fileCancel').one('click', function() {
+        // 				$fileUnit.remove();
+        // 				if ($('#files_' + $fileUnit.attr('id')).length) $('#files_' + $fileUnit.attr('id')).remove();
+        // 				$fileUnit.remove();
+        // 		});
+        // });
+        //
+        // //        文件加入上传序列
+        // uploader.on('fileQueued', function(file) {
+        // 		// console.info(file.fileNumLimit);
+        // 		$listLayout.append('<div class="fileUnit" id="' + file.id + '"><div class="fileSuccess">&nbsp</div><div class="fileName">' + file.name + '</div><div class="fileCancel">&nbsp</div><div class="fileError"></div><div class="fileProcessBar"></div></div>');
+        // 		//            //console.info('文件数量', file);
+        // 		//            取消上传和删除已上传
+        // 		var $fileUnit = $('#' + file.id);
+        // 		$fileUnit.find('.fileCancel').one('click', function() {
+        // 				if ($('#files_' + file.id).length) $('#files_' + file.id).remove();
+        // 				$fileUnit.remove();
+        // 				uploader.removeFile(file, true);
+        // 		});
+        // 		$('#' + file.id).find('.fileProcessBar').fadeTo(10, 0.5);
+        // });
+        // //        文件上传进度显示
+        // uploader.on('uploadProgress', function(file, percentage) {
+        // 		$('#' + file.id).find('.fileProcessBar').css({
+        // 				width: percentage * 100 + '%'
+        // 		});
+        // 		if (percentage == 1) $('#' + file.id).find('.fileProcessBar').hide();
+        // 		//            //console.info(file);
+        // 		//            //console.info(percentage);
+        // });
+
+
+        //
+
+    });

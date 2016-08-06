@@ -57,6 +57,7 @@ define('zxl/grid', function (require, exports, module) {
             });
             $select = $('.x-select', _$pageBar);
             //            点击上一页下一页
+            console.info('---');
             $prev.on({
                 click: function () {
                     if($select.prev().is('.m-pageButton')) $select.prev().click();

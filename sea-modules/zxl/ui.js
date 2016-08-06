@@ -11,7 +11,7 @@ define('zxl/ui', function (require, exports, module) {
     //    ui模块
     function ui(_$g) {
         var $g = _$g || document;
-        //                console.info('ui init');
+        console.info('ui init');
         //                console.info(ui);
         //        ui.context = function () {
         //            console.info($g);
@@ -54,6 +54,7 @@ define('zxl/ui', function (require, exports, module) {
         //        window
         $('[window]', $g).each(function (i, e) {
             var $this = $(this);
+            //            console.info($this);
             var options = $.zJSON($this.attr('window'));
             $this.on({
                 click: function () {
@@ -92,12 +93,14 @@ define('zxl/ui', function (require, exports, module) {
                 }
             });
         });
+        //        ajax提交
         $('.m-ajaxSubmit', $g).each(function (i, e) {
             var $form = $('form');
             var callback = $.extend({}, ajax.callback, $.zJSON($form.attr('callback')));
             $form.data({
                 callback: callback
             });
+            console.info($form);
             $form.on({
                 submit: function () {
                     ajax.ajaxSubmit($form);
@@ -105,8 +108,73 @@ define('zxl/ui', function (require, exports, module) {
                 }
             });
         });
+        // 单个按钮ajax点击
+        $('[m-ajax]', $g).each(function () {
+            var $this = $(this);
+            $this.on({
+                click: function () {
+                    ajax.ajax($this);
+                }
+            });
+        });
+        // 上传组件
+        $('[upload]', $g).each(function () {
+            var $thisUpload = $(this);
+            var _options = {
+                auto: true,
+                swf: index.options.swf,
+                pick: {
+                    id: $thisUpload[0]
+                },
+                eventsBack: {
+                    // eventsBack是我自己新增，方便调用。
+                    beforeFileQueued: function (file) {
+                        // 当文件被加入队列之前触发，此事件的handler返回值为false，则此文件不会被添加进入队列。
+                        // 参数File对象
+                    },
+                    uploadSuccess: function (file, data) {
+                        //当文件上传成功时触发
+                        // File对象
+                        // data 服务端返回的数据
+                    },
+                    uploadError: function (file, data) {
+                        //当文件上传成功时触发
+                        // File对象
+                        // data 服务端返回的数据
+                    },
+                    error: function (handler) {
+                        // 当validate不通过时，会以派送错误事件的形式通知调用者
+                        // type {String} 错误类型。
+                        // 当validate不通过时，会以派送错误事件的形式通知调用者。通过upload.on('error', handler)可以捕获到此类错误，目前有以下错误会在特定的情况下派送错来。
+
+                        // if (handler == "Q_EXCEED_NUM_LIMIT") {
+                        //     index.alert("最多只能上传" + options.fileNumLimit + "个!");
+                        // }
+                        // if (handler == "F_DUPLICATE") {
+                        //     index.alert("文件重复!");
+                        // }
+                        // Q_EXCEED_NUM_LIMIT 在设置了fileNumLimit且尝试给uploader添加的文件数量超出这个值时派送。
+                        // Q_EXCEED_SIZE_LIMIT 在设置了Q_EXCEED_SIZE_LIMIT且尝试给uploader添加的文件总大小超出这个值时派送。
+                        // Q_TYPE_DENIED 当文件类型不满足时触发。。
+                    }
+                }
+            };
+            // $thisUpload.addClass('upload');
+            var options = $.zJSON($(this).attr('upload'));
+            options = $.extend({}, _options, options);
+            var uploader;
+            //        初始化文件上传组件
+            uploader = WebUploader.create(options);
+            uploader.on('beforeFileQueued', options.eventsBack.beforeFileQueued);
+            //        文件上传成功{}
+            uploader.on('uploadSuccess', options.eventsBack.uploadSuccess);
+            //        当文件上传出错时触发{}
+            uploader.on('uploadError', options.eventsBack.uploadError);
+            //        上传错误
+            uploader.on('error', options.eventsBack.error);
+        });
         $('.m-pageSubmit', $g).each(function (i, e) {
-            var $form = $('form');
+            var $form = $(this);
             var callback = $.extend({}, ajax.callback, $.zJSON($form.attr('callback')));
             $form.data({
                 callback: callback
@@ -130,6 +198,7 @@ define('zxl/ui', function (require, exports, module) {
             $this.attr('pageBar-id', pageId);
             grid.pageBar($this);
         });
+
         //        自定义ui事件
         userUi($g);
 

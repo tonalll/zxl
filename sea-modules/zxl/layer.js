@@ -104,13 +104,13 @@ define('zxl/layer', function (require, exports, module) {
             var options = $.extend({}, layer.options, _options);
             if (!options.id) options.id = 'default' + Math.random().toString().replace('0.', '');
             if (!options.beforeAdd()) return;
-            options.target.on({
-                ['layerAdd.' + options.id]: function (e, _id) {
+            options.target.on(
+                'layerAdd.' + options.id, function (e, _id) {
                     //                    console.info('--layerAdd--');
                     $(this).show();
                     layer.open(_id);
                 }
-            });
+            );
             layer.add(options);
         },
 

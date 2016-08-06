@@ -20,7 +20,7 @@ define('zxl/index', function (require, exports, module) {
             $.ajax({
                 timeout: 40000,
                 cache: false,
-                url: this.option.frag
+                url: this.options.frag
             }).done(function (_html) {
                 $(_html).find('[role]').each(function (i, e) {
                     var $this = $(this);
@@ -51,17 +51,22 @@ define('zxl/index', function (require, exports, module) {
                         layout.resize();
                     }
                 });
-                seajs.use('ui', function (ui) {
-                    ui();
-                });
+                
                 seajs.use('room', function (room) {
-                    room.init(index.option);
+                    room.init(index.options);
                 });
+                //                引入上传插件
+                //                __PUBLIC__zxl/sea-modules/zxl/webuploader.js
+                //                seajs.config().data.base
+                //                    <script src="__PUBLIC__zxl/sea-modules/zxl/webuploader.js"></script>
+
+                $('html').append('<script src="'+seajs.config().data.base + 'zxl/webuploader.min.js?v='+Math.random()+'"></script>');
+//                $('script:last').attr('src', seajs.config().data.base + 'zxl/webuploader.js');
 
             });
         },
         on: function (_obj) {
-//            console.info(_obj.init);
+            //            console.info(_obj.init);
             var obj = _obj || {};
             if ($.isFunction(obj.init)) {
                 this.uid += 1;
@@ -75,11 +80,11 @@ define('zxl/index', function (require, exports, module) {
             //
         },
         uid: 0,
-        config: function (_option) {
+        config: function (_options) {
             //            console.info(_option);
-            this.option = $.extend(this.option, _option);
+            this.options = $.extend(this.options, _options);
         },
-        option: {
+        options: {
             frag: '',
             taskBar: '',
             defaultPage: '',
