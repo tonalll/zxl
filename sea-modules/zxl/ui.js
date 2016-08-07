@@ -8,6 +8,7 @@ define('zxl/ui', function (require, exports, module) {
     var ajax = require('ajax');
     var grid = require('grid');
     var datepicker = require('datepicker');
+    require('umeditor');
     //    ui模块
     function ui(_$g) {
         var $g = _$g || document;
@@ -167,7 +168,7 @@ define('zxl/ui', function (require, exports, module) {
             };
             // $thisUpload.addClass('upload');
             var options = $.zJSON($(this).attr('upload'));
-            options = $.extend({}, _options, options);
+            options = $.extend(true, {}, _options, options);
             var uploader;
             //        初始化文件上传组件
             uploader = WebUploader.create(options);
@@ -176,6 +177,7 @@ define('zxl/ui', function (require, exports, module) {
                 uploader: uploader
             });
             //            上传组件初始化成功后调用
+            console.info(options.eventsBack);
             options.eventsBack.init(uploader);
             uploader.on('beforeFileQueued', options.eventsBack.beforeFileQueued);
             //        文件上传成功{}
@@ -185,6 +187,7 @@ define('zxl/ui', function (require, exports, module) {
             //        上传错误
             uploader.on('error', options.eventsBack.error);
         });
+        //        分页组件
         $('.m-pageSubmit', $g).each(function (i, e) {
             var $form = $(this);
             var callback = $.extend({}, ajax.callback, $.zJSON($form.attr('callback')));
@@ -209,6 +212,14 @@ define('zxl/ui', function (require, exports, module) {
             $pageLayout.attr('pageLayout-id', pageId);
             $this.attr('pageBar-id', pageId);
             grid.pageBar($this);
+        });
+        // editor编辑器组件
+        $('.m-editor', $g).each(function () {
+            var $this = $(this);
+            var id = 'editor-' + Math.random().toString().slice(2);
+            $this.attr('id', id);
+            UM.getEditor(id);
+            UM.getEditor(id).focus();
         });
 
         //        自定义ui事件

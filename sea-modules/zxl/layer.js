@@ -92,7 +92,7 @@ define('zxl/layer', function (require, exports, module) {
             total -= 1;
             if (total == 0) {
                 delete room.window.cache[$window.data().id];
-                $window.data().$unit.removeClass('x-unit-open');
+                room.taskBar.cache[$window.data().id].$unit.removeClass('x-unit-open');
                 $window.remove();
                 var $sleep = $('#taskBar .x-layout .x-unit-sleep:last');
                 $sleep.click();

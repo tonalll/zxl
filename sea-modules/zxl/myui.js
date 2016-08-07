@@ -44,7 +44,7 @@ define('zxl/myUi', function (require, exports, module) {
                         var $this = $(this);
                         var $unit = $this.closest('.x-unit');
                         var uploader = $seDtLayout.data().uploader;
-                        uploader.removeFile($unit.data().file, true);
+                        if($unit.data().file) uploader.removeFile($unit.data().file, true);
                         $unit.remove();
                         creatDt();
                     }
@@ -57,7 +57,7 @@ define('zxl/myUi', function (require, exports, module) {
                 click: function () {
                     var $unit = $seSltLayout.find('.x-unit');
                     var uploader = $seSltLayout.data().uploader;
-                    uploader.removeFile($unit.data().file, true);
+                    if($unit.data().file) uploader.removeFile($unit.data().file, true);
                     $unit.find('img').remove();
                     $unit.hide();
                     $('input[name=sltpath]').val('');
