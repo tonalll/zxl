@@ -6,6 +6,8 @@
     <title>-----------</title>
     <link rel="stylesheet" href="./sea-modules/zxl/css/zxl.css">
     <link rel="stylesheet" href="./sea-modules/zxl/css/base.css">
+    <link rel="stylesheet" href="./sea-modules/zxl/css/webuploader.css" />
+    <link href="./sea-modules/zxl/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
@@ -276,6 +278,8 @@
                 "msg": "zxl/msg.js",
                 "edit": "zxl/edit.js",
                 "zxlDone": "zxl/zxlDone.js",
+                "umeditor": "zxl/umeditor/umeditor.js",
+                //                以下为项目组件
             },
             preload: ["jquery"],
             map: [
@@ -294,9 +298,9 @@
         });
         seajs.use("zxl/zxlUi");
         seajs.use("zxl/zxlDone");
-         setTimeout(function () {
-            //            location.reload();
-        }, 3000);
+         //        以下为项目代码
+         //        seajs.use("zxl/../../../-js/adminUi");
+         //        seajs.use("zxl/myUi");
     </script>
 </body>
 
