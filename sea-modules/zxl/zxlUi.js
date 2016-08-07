@@ -2,7 +2,7 @@ define('zxl/zxlUi', function (require, exports, module) {
     var $ = require('jquery');
     var zxl = require('index');
     var room = require('room');
-    //    自定义ui模块 绑定相关事件
+    //    zxl框架ui模块 绑定相关事件
     //    console.info('zxlUi init');
 
     zxl.on({

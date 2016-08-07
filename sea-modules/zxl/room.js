@@ -56,8 +56,9 @@ define('zxl/room', function (require, exports, module) {
                 delete room.window.cache[_id];
             },
             getWindow: function (_id) {
-                var $window = $('[window-id="' + _id + '"]');
-                return $window;
+
+                if (_id == 'currentWindow') return $('.window:visible:first');
+                return _id ? $('[window-id="' + _id + '"]') : $('.window:visible:first');
             },
             //            打开激活窗口
             open: function (_id) {

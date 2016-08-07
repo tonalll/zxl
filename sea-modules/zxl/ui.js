@@ -127,6 +127,9 @@ define('zxl/ui', function (require, exports, module) {
                     id: $thisUpload[0]
                 },
                 eventsBack: {
+                    init: function (_uploader) {
+                        //                    上传组件初始化后调用传入_uploader为上传组件实例
+                    },
                     // eventsBack是我自己新增，方便调用。
                     beforeFileQueued: function (file) {
                         // 当文件被加入队列之前触发，此事件的handler返回值为false，则此文件不会被添加进入队列。
@@ -138,11 +141,14 @@ define('zxl/ui', function (require, exports, module) {
                         // data 服务端返回的数据
                     },
                     uploadError: function (file, data) {
-                        //当文件上传成功时触发
+                        console.info('uploadError');
+                        //当文件上传出错时触发
                         // File对象
                         // data 服务端返回的数据
                     },
                     error: function (handler) {
+                        console.info('error');
+                        //                        console.info(handler);
                         // 当validate不通过时，会以派送错误事件的形式通知调用者
                         // type {String} 错误类型。
                         // 当validate不通过时，会以派送错误事件的形式通知调用者。通过upload.on('error', handler)可以捕获到此类错误，目前有以下错误会在特定的情况下派送错来。
@@ -150,9 +156,9 @@ define('zxl/ui', function (require, exports, module) {
                         // if (handler == "Q_EXCEED_NUM_LIMIT") {
                         //     index.alert("最多只能上传" + options.fileNumLimit + "个!");
                         // }
-                        // if (handler == "F_DUPLICATE") {
-                        //     index.alert("文件重复!");
-                        // }
+                        if (handler == "F_DUPLICATE") {
+                            msg.notice("文件重复!");
+                        }
                         // Q_EXCEED_NUM_LIMIT 在设置了fileNumLimit且尝试给uploader添加的文件数量超出这个值时派送。
                         // Q_EXCEED_SIZE_LIMIT 在设置了Q_EXCEED_SIZE_LIMIT且尝试给uploader添加的文件总大小超出这个值时派送。
                         // Q_TYPE_DENIED 当文件类型不满足时触发。。
@@ -165,6 +171,12 @@ define('zxl/ui', function (require, exports, module) {
             var uploader;
             //        初始化文件上传组件
             uploader = WebUploader.create(options);
+            //            将上传组件缓存入上传节点数据
+            $thisUpload.data({
+                uploader: uploader
+            });
+            //            上传组件初始化成功后调用
+            options.eventsBack.init(uploader);
             uploader.on('beforeFileQueued', options.eventsBack.beforeFileQueued);
             //        文件上传成功{}
             uploader.on('uploadSuccess', options.eventsBack.uploadSuccess);

@@ -71,20 +71,31 @@ define('zxl/ajax', function (require, exports, module) {
                 });
             },
             ajax: function (_$this) {
+                var _options = {
+                    url: '',
+                    message: '',
+                    beforeBack: function (_$this) {
+                        //                        _$this当前点击的组件对象
+                        return true;
+                    },
+                    afterBack: function (_json, _$this) {}
+                };
                 var options = $.zJSON(_$this.attr('m-ajax'));
+                options = $.extend({}, _options, options);
                 if (options.message) msg.confirm(options.message, {
                     enter: function () {
-                        ajax._ajax(options.url);
+                        if (options.beforeBack(_$this)) ajax._ajax(options, _$this);
                     },
                     mask: false
                 });
-                else ajax._ajax(options.url);
+                else ajax._ajax(options, _$this);
             },
-            _ajax: function (_url) {
+            _ajax: function (_options, _$this) {
                 $.ajax({
-                    url: _url
+                    url: _options.url
                 }).done(function (_json) {
                     ajax.done(_json);
+                    _options.afterBack(_json, _$this);
                 });
             },
             pageSubmit: function (_$form) {
@@ -106,10 +117,9 @@ define('zxl/ajax', function (require, exports, module) {
                 });
             },
             done: function (_json) {
-                console.info(_json);
+                //                console.info(_json);
 
                 //            msg.alert(_json.message,true);
-                msg.notice(_json.message);
                 //            var callback = _$form.data().callback;
                 //            callback.afterBack(_$form, _json);
                 //        自定义全局成功回调事件
@@ -117,7 +127,7 @@ define('zxl/ajax', function (require, exports, module) {
 
             },
             on: function (_obj) {
-                            console.info(_obj.done);
+                console.info(_obj.done);
                 var obj = _obj || {};
                 if ($.isFunction(obj.done)) {
                     this.uid += 1;

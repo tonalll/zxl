@@ -75,6 +75,7 @@ define('zxl/layer', function (require, exports, module) {
             });
         },
         getLayer: function (_id) {
+            if (_id == 'currentLayer') return $('.layer:visible:first');
             return _id ? $('.layer[layer-id=' + _id + ']') : $('.layer:visible:first');
         },
         refresh: function (_id) {
