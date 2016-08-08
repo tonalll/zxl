@@ -55,10 +55,24 @@
     "url": "./sea-modules/zxl/ajax/layer.html",
     "fixed": true
 }, {
-    "id": "aaaaaaaaaaaaaaaaaaaaaaa",
+    "id": "editor",
     "autoRefresh": "false",
-    "title": "分页示例",
+    "title": "editor编辑器组件",
     "ico": "x-ico-default",
-    "url": "./sea-modules/zxl/ajax/aaaaaaaaaaaaaaaaaaaaaaa.html",
+    "url": "./sea-modules/zxl/ajax/editor.html",
+    "fixed": true
+}, {
+    "id": "upload",
+    "autoRefresh": "false",
+    "title": "upload上传组件",
+    "ico": "x-ico-default",
+    "url": "./sea-modules/zxl/ajax/upload.html",
+    "fixed": true
+}, {
+    "id": "validate",
+    "autoRefresh": "false",
+    "title": "validate验证组件",
+    "ico": "x-ico-default",
+    "url": "./sea-modules/zxl/ajax/validate.html",
     "fixed": true
 }]

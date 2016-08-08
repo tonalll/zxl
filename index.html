@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./sea-modules/zxl/css/base.css">
     <link rel="stylesheet" href="./sea-modules/zxl/css/webuploader.css" />
     <link href="./sea-modules/zxl/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <!-- 提示插件 -->
+    <link rel="stylesheet" type="text/css" href="./sea-modules/zxl/css/tip-yellowsimple.css">
 </head>
 
 <body>
@@ -265,6 +267,8 @@
                 "index": "zxl/index.js",
                 "jquery": "jquery/jquery-1.11.2.min.js",
                 "jqueryExtend": "zxl/jqueryExtend.js",
+                "validate": "zxl/validate.js",
+                "poshytip": "zxl/poshytip.js",
                 "extend": "zxl/extend.js",
                 "datepicker": "zxl/datepicker.js",
                 "layout": "zxl/layout.js",
@@ -287,20 +291,81 @@
     ],
         });
 
-        seajs.use("zxl/index", function (index) {
-            index.config({
+        seajs.use("zxl/index", function (zxl) {
+            zxl.config({
                 frag: './sea-modules/zxl/frag.html',
                 swf: './sea-modules/zxl/Uploader.swf',
                 taskBar: './sea-modules/zxl/ajax/taskBar.json',
                 defaultPage: 'pageDiv',
             });
-            index.init();
+            zxl.init();
         });
         seajs.use("zxl/zxlUi");
         seajs.use("zxl/zxlDone");
-         //        以下为项目代码
-         //        seajs.use("zxl/../../../-js/adminUi");
-         //        seajs.use("zxl/myUi");
+        seajs.use('zxl/index', function (zxl) {
+
+            zxl.on({
+                init: function () {
+                    //        验证插件提示信息初始化
+                    if (jQuery.validator) jQuery.extend(jQuery.validator.messages, {
+                        required: "必填字段",
+                        remote: "请修正该字段",
+                        email: "请输入正确格式的电子邮件",
+                        url: "请输入合法的网址",
+                        date: "请输入合法的日期",
+                        dateISO: "请输入合法的日期 (ISO).",
+                        number: "请输入合法的数字",
+                        digits: "只能输入整数",
+                        creditcard: "请输入合法的信用卡号",
+                        equalTo: "请再次输入相同的值",
+                        accept: "请输入拥有合法后缀名的字符串",
+                        maxlength: jQuery.validator.format("请输入一个 长度最多是 {0} 的字符串"),
+                        minlength: jQuery.validator.format("请输入一个 长度最少是 {0} 的字符串"),
+                        rangelength: jQuery.validator.format("请输入 一个长度介于 {0} 和 {1} 之间的字符串"),
+                        range: jQuery.validator.format("请输入一个介于 {0} 和 {1} 之间的值"),
+                        max: jQuery.validator.format("请输入一个最大为{0} 的值"),
+                        min: jQuery.validator.format("请输入一个最小为{0} 的值")
+                    });
+                    //        单选、多选、下拉错误显示位置
+                    if ($.validator) $.extend($.validator.defaults, {
+                        errorClass: 'validError',
+                        errorPlacement: function (error, element) {
+                            if (!element.is('[has-poshytip]')) {
+                                var alignY = (element.closest('.m-dialog').length || element.closest('.stage-body').length) && element.position().top < 30 ? 'bottom' : 'top';
+                                var alignX = (element.closest('.m-dialog').length || element.closest('.stage-body').length) && element.position().top < 30 ? 'inner-left' : 'inner-right';
+                                if (element.is('.m-select')) element = element.next();
+                                element.poshytip({
+                                    content: error.text(),
+                                    className: 'tip-yellowsimple',
+                                    bgImageFrameSize: 10,
+                                    alignTo: 'target',
+                                    alignX: alignX,
+                                    alignY: alignY,
+                                    offsetX: 0,
+                                    offsetY: 5,
+                                    keepInViewport: false
+                                }).attr('has-poshytip', '');
+                            }
+                            element.poshytip('update', error.text()).poshytip('show');
+                        },
+                        submitHandler: function (_form) {
+                            //                console.info('表单填写正确');
+                        }
+                    });
+
+                    //                    // 手机号码验证
+                    //                    $.validator.addMethod("isMobile", function (value, element) {
+                    //                        var length = value.length;
+                    //                        return this.optional(element) || (length == 11 && /^(((17[0-9]{1})|(13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(value));
+                    //                    }, "请正确填写您的手机号码。");
+
+                }
+            });
+        });
+
+        //        以下为项目代码
+        //        seajs.use("zxl/../../../-js/adminUi");
+        //        seajs.use("zxl/myUi");
     </script>
 </body>
 

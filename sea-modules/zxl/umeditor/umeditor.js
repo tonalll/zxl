@@ -407,10 +407,11 @@ function(a){var b=this,c=null,d=null,e=null;this.addListener("selectionchange",f
     /**
      * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。
      */
+     console.info(URL);
     window.UMEDITOR_CONFIG = {
 
         //为编辑器实例添加一个路径，这个不能被注释
-        UMEDITOR_HOME_URL : URL+'umeditor/'
+        UMEDITOR_HOME_URL : URL+'sea-modules/zxl/umeditor/'
 
         //图片上传配置区
         ,imageUrl:URL+"php/imageUp.php"             //图片上传提交地址

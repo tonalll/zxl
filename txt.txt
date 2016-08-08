@@ -1,5 +1,10 @@
-2016-08-07
+﻿2016-08-07
 新增此文档
 新增WebUploader上传组件
 新增umeditor富文本编译器组件
 修复只有一个layer时候关闭layer后自动关闭当前window组件bug
+
+2016-08-08
+增加jquery.validate.js验证组件
+调整自定义ui方法的加载
+新增框架初始化回调
