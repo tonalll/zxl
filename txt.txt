@@ -1,0 +1,5 @@
+2016-08-07
+新增此文档
+新增WebUploader上传组件
+新增umeditor富文本编译器组件
+修复只有一个layer时候关闭layer后自动关闭当前window组件bug
