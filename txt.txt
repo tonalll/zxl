@@ -8,3 +8,4 @@
 增加jquery.validate.js验证组件
 调整自定义ui方法的加载
 新增框架初始化回调
+m-ajax组件增加遮罩
