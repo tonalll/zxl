@@ -411,7 +411,8 @@ function(a){var b=this,c=null,d=null,e=null;this.addListener("selectionchange",f
     window.UMEDITOR_CONFIG = {
 
         //为编辑器实例添加一个路径，这个不能被注释
-        UMEDITOR_HOME_URL : URL+'sea-modules/zxl/umeditor/'
+//        UMEDITOR_HOME_URL : URL+'sea-modules/zxl/umeditor/'
+        UMEDITOR_HOME_URL : seajs.data.base+'zxl/umeditor/'
 
         //图片上传配置区
         ,imageUrl:URL+"php/imageUp.php"             //图片上传提交地址
