@@ -1,12 +1,19 @@
 define('zxl/myUi', function (require, exports, module) {
     var $ = require('jquery');
-    var zxl = require('index');
+    var ui = require('ui');
+    var global = require('global');
+    var layout = require('layout');
     var room = require('room');
-    //    自定义ui模块 绑定相关事件
-    console.info('myUi init');
+    var layer = require('layer');
+    var ajax = require('ajax');
+    var grid = require('grid');
+    var datepicker = require('datepicker');
+    require('umeditor');
+    require('validate');
+    require('poshytip');
 
-    zxl.on({
-        init: function (_$g) {
+    ui.on({
+        parse: function (_$g) {
             var $g = _$g || document;
             //            console.info('myUi init');
             //            console.info($('[date]', $g));
