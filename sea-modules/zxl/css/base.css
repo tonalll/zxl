@@ -145,9 +145,90 @@ l layout 布局
   l-col 列
 使用display: table;布局，兼容性后，内容元素float后不影响文档流；
 */
-
-
+/********************************合并过来的********************************/
+/*布局上下居中*/
+.l-table-middle>.l-table-cell{vertical-align: middle;}
+.l-table-middle>.l-table-row>.l-table-cell{vertical-align: middle;}
+/*布局 0.5边距*/
+.l-table{display: table;width: 100%;border-spacing: 10px;}
+.l-table>.l-table-cell{display: table-cell;}
+/*无边距*/
+.l-table-collapse{display: table;width: 100%;border-collapse: collapse;}
+.l-table-collapse>.l-table-cell{display: table-cell;}
+/*两边无边距*/
+.l-table-collapse-both{display: table;width: 100%;border-collapse: collapse;}
+.l-table-collapse-both>.l-table-cell{display: table-cell;}
+.l-table-collapse-both>.l-table-cell>.l-table-cell-layout{margin-right: 0.5em;}
 /*行*/
+.block-layout{background:#fff;padding: 10px;margin-top:10px;}
+.block-title{background:#fff;border-bottom:1px solid #000;}
+.block-title .l-table-cell{padding:10px 0;}
+.l-width-100-100{width: 100%;}
+.l-width-1000{width: 1000px;}
+.l-width-1200{width: 1200px;}
+.l-margin-0{margin: 0!important;}
+.l-margin-left-0{margin-left: 0;}
+.l-margin-right-0{margin-right: 0;}
+.l-margin-top-0{margin-top: 0;}
+.l-margin-bottom-0{margin-bottom: 0;}
+.l-margin-0auto{margin: 0 auto;}
+
+.c-bgColor-0{background-color:#000!important}
+.c-bgColor-1{background-color:#111!important}
+.c-bgColor-2{background-color:#222!important}
+.c-bgColor-3{background-color:#333!important}
+.c-bgColor-4{background-color:#444!important}
+.c-bgColor-5{background-color:#555!important}
+.c-bgColor-6{background-color:#666!important}
+.c-bgColor-7{background-color:#777!important}
+.c-bgColor-8{background-color:#888!important}
+.c-bgColor-9{background-color:#999!important}
+.c-bgColor-a{background-color:#aaa!important}
+.c-bgColor-b{background-color:#bbb!important}
+.c-bgColor-c{background-color:#ccc!important}
+.c-bgColor-d{background-color:#ddd!important}
+.c-bgColor-e{background-color:#eee!important}
+.c-bgColor-f{background-color:#fff!important}
+
+.c-bdColor-0{border-color:#000}
+.c-bdColor-1{border-color:#111}
+.c-bdColor-2{border-color:#222}
+.c-bdColor-3{border-color:#333}
+.c-bdColor-4{border-color:#444}
+.c-bdColor-5{border-color:#555}
+.c-bdColor-6{border-color:#666}
+.c-bdColor-7{border-color:#777}
+.c-bdColor-8{border-color:#888}
+.c-bdColor-9{border-color:#999}
+.c-bdColor-a{border-color:#aaa}
+.c-bdColor-b{border-color:#bbb}
+.c-bdColor-c{border-color:#ccc}
+.c-bdColor-d{border-color:#ddd}
+.c-bdColor-e{border-color:#eee}
+.c-bdColor-f{border-color:#fff}
+
+.c-bAlpha-1{background:url('./../img/black-alpha-1.png')!important}
+.c-bAlpha-2{background:url('./../img/black-alpha-2.png')!important}
+.c-bAlpha-3{background:url('./../img/black-alpha-3.png')!important}
+.c-bAlpha-4{background:url('./../img/black-alpha-4.png')!important}
+.c-bAlpha-5{background:url('./../img/black-alpha-5.png')!important}
+.c-bAlpha-6{background:url('./../img/black-alpha-6.png')!important}
+.c-bAlpha-7{background:url('./../img/black-alpha-7.png')!important}
+.c-bAlpha-8{background:url('./../img/black-alpha-8.png')!important}
+.c-bAlpha-9{background:url('./../img/black-alpha-9.png')!important}
+
+.c-wAlpha-1{background:url('./../img/white-alpha-1.png')!important}
+.c-wAlpha-2{background:url('./../img/white-alpha-2.png')!important}
+.c-wAlpha-3{background:url('./../img/white-alpha-3.png')!important}
+.c-wAlpha-4{background:url('./../img/white-alpha-4.png')!important}
+.c-wAlpha-5{background:url('./../img/white-alpha-5.png')!important}
+.c-wAlpha-6{background:url('./../img/white-alpha-6.png')!important}
+.c-wAlpha-7{background:url('./../img/white-alpha-7.png')!important}
+.c-wAlpha-8{background:url('./../img/white-alpha-8.png')!important}
+.c-wAlpha-9{background:url('./../img/white-alpha-9.png')!important}
+/********************************合并过来的********************************/
+
+
 
 .l-row,
 .l-row-padding {
@@ -655,7 +736,36 @@ l layout 布局
     background: #ddd;
     margin: 10px 0;
 }
-
+.l-font-12{
+    font-size: 12px;
+}
+.l-font-14{
+    font-size: 14px;
+}
+.l-font-16{
+    font-size: 16px;
+}
+.l-font-18{
+    font-size: 18px;
+}
+.l-font-20{
+    font-size: 20px;
+}
+.l-font-22{
+    font-size: 22px;
+}
+.l-font-24{
+    font-size: 24px;
+}
+.l-font-26{
+    font-size: 26px;
+}
+.l-font-28{
+    font-size: 28px;
+}
+.l-font-30{
+    font-size: 30px;
+}
 
 /*
 module 模块
@@ -904,6 +1014,9 @@ m
 
 .c-wsn {
     white-space: nowrap;
+}
+.c-tdn{
+    text-decoration: none;
 }
 
 
