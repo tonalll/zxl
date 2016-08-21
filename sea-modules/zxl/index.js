@@ -29,7 +29,7 @@ define('zxl/index', function (require, exports, module) {
                 });
                 //                console.info(index.frag);
                 index._init();
-                ui();
+                // ui();
             }).fail(function () {
                 alert('系统初始化失败，配置文件加载错误！');
             });
